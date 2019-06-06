@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+
+.seat {
+  height: 30px;
+  width: 30px;
+  margin-right: 2px;
+  background-color: #999999;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.selected {
+  background-color: red;
+}
+
+.booked {
+  background-color: green;
+}
