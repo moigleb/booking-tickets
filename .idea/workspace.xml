@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38bb6942-b5a0-4f83-9d35-9199d21baf51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/seats.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Cart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Modal.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ProductsList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Seat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/SeatsItem.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/SeatsList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Ticket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/TicketItem.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/TicketsList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/App/App.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Cart/actions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Cart/constants.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Cart/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Cart/reducer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Cart/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Seats/actions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Seats/constants.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Seats/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Seats/reducer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Seats/saga.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/Seats/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/store/sagas/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/api.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/axios.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/endpoints.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/localStorage.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/App.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/logo.svg" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/containers/App/App.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/App.test.js" afterPath="$PROJECT_DIR$/src/containers/App/App.test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -393,15 +358,15 @@
       <workItem from="1559797708708" duration="6966000" />
       <workItem from="1559816260687" duration="988000" />
       <workItem from="1559817801781" duration="8000" />
-      <workItem from="1559841712069" duration="5177000" />
+      <workItem from="1559841712069" duration="5608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76819000" />
+    <option name="totallyTimeSpent" value="77250000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1602" height="873" extended-state="7" />
+    <frame x="-1" y="0" width="1602" height="873" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23589092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

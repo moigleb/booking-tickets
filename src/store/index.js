@@ -15,7 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistConfig = {
   key: "root",
   storage,
-  stateReconciler: autoMergeLevel2,
+  stateReconciler: autoMergeLevel2
   // whitelist: ['seatsReducer'],
 };
 

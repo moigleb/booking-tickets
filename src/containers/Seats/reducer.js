@@ -1,20 +1,27 @@
-import { RECEIVE_SEATS, REQUEST_SEATS, FAILED_SEATS, SELECTED_SEAT, UNSELECTED_SEAT, CLEAR_SELECTED } from "./constants";
+import {
+  RECEIVE_SEATS,
+  REQUEST_SEATS,
+  FAILED_SEATS,
+  SELECTED_SEAT,
+  UNSELECTED_SEAT,
+  CLEAR_SELECTED
+} from "./constants";
 
 const initialState = {
   seats: [],
   isLoading: false,
   selectedSeats: [],
   errorMessage: false,
-  rows: [10, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+  rows: [10, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30]
 };
 
-export default function seatsReducer (state = initialState, action) {
+export default function seatsReducer(state = initialState, action) {
   switch (action.type) {
     case REQUEST_SEATS:
       return {
         ...state,
         isLoading: true,
-        errorMessage: false,
+        errorMessage: false
       };
     case RECEIVE_SEATS:
       return {
@@ -27,28 +34,28 @@ export default function seatsReducer (state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        errorMessage: true,
+        errorMessage: true
       };
     case SELECTED_SEAT:
       return {
         ...state,
-        selectedSeats:[
-          ...state.selectedSeats,
-          action.itemSelect]
+        selectedSeats: [...state.selectedSeats, action.itemSelect]
       };
-      case UNSELECTED_SEAT:
-        const unSelect = state.selectedSeats.filter(item=>item.id !== action.id);
-        return {
+    case UNSELECTED_SEAT:
+      const unSelect = state.selectedSeats.filter(
+        item => item.id !== action.id
+      );
+      return {
         ...state,
-        selectedSeats:unSelect
+        selectedSeats: unSelect
       };
     case CLEAR_SELECTED:
       state.selectedSeats.forEach(item => {
         state.seats.forEach(seatsItem => {
-          if(item.id === seatsItem.id) {
+          if (item.id === seatsItem.id) {
             seatsItem.status = "booked";
           }
-        })
+        });
       });
 
       return {
@@ -56,13 +63,17 @@ export default function seatsReducer (state = initialState, action) {
         selectedSeats: []
       };
     default:
-      return state
+      return state;
   }
-};
+}
 
-const getTicket = (state, id) => state.find(ticket=>ticket.id===id);
+const getTicket = (state, id) => state.find(ticket => ticket.id === id);
 
 export const getTotal = state =>
   state.seatsReducer.selectedSeats
-    .reduce((total, el) => total + getTicket(state.seatsReducer.selectedSeats, el.id).price * 1, 0)
+    .reduce(
+      (total, el) =>
+        total + getTicket(state.seatsReducer.selectedSeats, el.id).price * 1,
+      0
+    )
     .toFixed(2);

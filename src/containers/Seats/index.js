@@ -1,41 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {selectedSeats, unSelectedSeats} from './actions';
-import SeatsItem from '../../components/SeatsItem';
-import SeatsList from '../../components/SeatsList';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { selectedSeats, unSelectedSeats } from "./actions";
+import SeatsItem from "../../components/SeatsItem";
+import SeatsList from "../../components/SeatsList";
 import ErrorModal from "../../components/Modal";
-import { useState } from 'react';
+import { useState } from "react";
 
-
-const SeatsContainer = ({ seats,  selectedSeats, unSelectedSeats, selectedSeatsProps }) => {
-  const {isShowing, toggle} = useModal();
+const SeatsContainer = ({
+  seats,
+  selectedSeats,
+  unSelectedSeats,
+  selectedSeatsProps
+}) => {
+  const { isShowing, toggle } = useModal();
   const [content, setModalContent] = useState("selected");
 
   let maxLength = selectedSeatsProps && selectedSeatsProps.length === 4;
 
-  const onHandleClick = (itemSelect) => (e) => {
+  const onHandleClick = itemSelect => e => {
     const targetClass = e.currentTarget.classList;
 
-    if(!targetClass.contains('booked')) {
-      if (!targetClass.contains('selected') && !maxLength) {
+    if (!targetClass.contains("booked")) {
+      if (!targetClass.contains("selected") && !maxLength) {
         itemSelect.status = "selected";
         selectedSeats(itemSelect);
-      } else if(targetClass.contains('selected')){
+      } else if (targetClass.contains("selected")) {
         unSelectedSeats(itemSelect.id);
         itemSelect.status = "exist";
       } else {
         toggle();
         setModalContent("selected");
-
       }
     } else {
       setModalContent("booked");
-      toggle()
+      toggle();
     }
   };
 
-  const objectRows = seats.reduce((acc, el)=> {
+  const objectRows = seats.reduce((acc, el) => {
     if (!acc.hasOwnProperty(el.row)) {
       acc[el.row] = 0;
     }
@@ -45,59 +48,59 @@ const SeatsContainer = ({ seats,  selectedSeats, unSelectedSeats, selectedSeatsP
 
   const rows = Object.values(objectRows);
 
-  return <React.Fragment>
+  return (
+    <React.Fragment>
       <SeatsList title="Seats">
-        {
-          rows.map((numSeats, index) => {
-            const itemArraySeats =  seats.filter(item => item.row === index+1);
-            return (
-              <div key={index}>
-                {
-                  itemArraySeats.map((seatItem, i) => {
-                    return <SeatsItem
-                      key={seatItem.id}
-                      seat={seatItem.seat}
-                      status={seatItem.status}
-                      price={seatItem.price}
-                      onSelectClicked={onHandleClick(seatItem)}/>
-                  })
-                }
-              </div>
-            )
-          })}
+        {rows.map((numSeats, index) => {
+          const itemArraySeats = seats.filter(item => item.row === index + 1);
+          return (
+            <div key={index}>
+              {itemArraySeats.map((seatItem, i) => {
+                return (
+                  <SeatsItem
+                    key={seatItem.id}
+                    seat={seatItem.seat}
+                    status={seatItem.status}
+                    price={seatItem.price}
+                    onSelectClicked={onHandleClick(seatItem)}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
       </SeatsList>
       <ErrorModal isShowing={isShowing} toggle={toggle} content={content} />
-  </React.Fragment>
-
+    </React.Fragment>
+  );
 };
 
-
 SeatsContainer.propTypes = {
-  seats: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    status: PropTypes.string.isRequired
-  })).isRequired,
+  seats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      price: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired
+    })
+  ).isRequired,
   selectedSeats: PropTypes.func.isRequired,
   unSelectedSeats: PropTypes.func.isRequired,
-  selectedSeatsProps: PropTypes.array.isRequired,
+  selectedSeatsProps: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
   seats: state.seatsReducer.seats,
   rows: state.seatsReducer.rows,
   selectedSeatsProps: state.seatsReducer.selectedSeats,
-  maxLength: state.seatsReducer.maxLength,
-
+  maxLength: state.seatsReducer.maxLength
 });
 
 export default connect(
   mapStateToProps,
-  {selectedSeats,
-    unSelectedSeats}
-)(SeatsContainer)
+  { selectedSeats, unSelectedSeats }
+)(SeatsContainer);
 
-function useModal () {
+function useModal() {
   const [isShowing, setIsShowing] = useState(false);
 
   function toggle() {
@@ -106,6 +109,6 @@ function useModal () {
 
   return {
     isShowing,
-    toggle,
-  }
+    toggle
+  };
 }

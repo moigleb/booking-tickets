@@ -1,6 +1,6 @@
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('persist:root');
+    const serializedState = localStorage.getItem("persist:root");
     if (serializedState === null) {
       return undefined;
     }

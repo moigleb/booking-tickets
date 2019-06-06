@@ -1,3 +1,6 @@
-import { ADD_TO_CART } from "./constants"
+import { ADD_TO_CART } from "./constants";
 
-export const addToCart = (selectedSeats) => ({ type: ADD_TO_CART, selectedSeats });
+export const addToCart = selectedSeats => ({
+  type: ADD_TO_CART,
+  selectedSeats
+});

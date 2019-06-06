@@ -20,4 +20,5 @@ export const EXISTING_FUND = "/funds/api/v1/dashboard/fund/fundCode/exists";
 export const RECEIVE_FUND_DETAIL_EXISTING = "/funds/api/v1/dashboard/fund/";
 export const SAVE_FUND = "/funds/api/v1/dashboard/fund/";
 export const PATCH_UPDATE_IMAGE = "/funds/api/v1/dashboard/fund/";
-export const GET_TRANSACTION_DETAILS = "/order/api/v1/orders?fields=amount%2Cchannel%2CeffectiveDate%2Cfee%2CfundCode%2CfundNo%2Cnav%2CprofitLoss%2CstatusCode%2CstatusDesc%2Ctax%2CtoFundCode%2CtoFundNo%2CtransCode%2CtransDatetime%2CtransNo%2Cunit%2CunitholderId%2CunitholderName&";
+export const GET_TRANSACTION_DETAILS =
+  "/order/api/v1/orders?fields=amount%2Cchannel%2CeffectiveDate%2Cfee%2CfundCode%2CfundNo%2Cnav%2CprofitLoss%2CstatusCode%2CstatusDesc%2Ctax%2CtoFundCode%2CtoFundNo%2CtransCode%2CtransDatetime%2CtransNo%2Cunit%2CunitholderId%2CunitholderName&";

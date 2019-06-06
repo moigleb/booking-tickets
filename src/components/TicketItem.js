@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Seat from './Seat'
+import React from "react";
+import PropTypes from "prop-types";
+import Seat from "./Seat";
 
 const TicketItem = ({ seat, price, status, onSelectClicked }) => (
   <Seat

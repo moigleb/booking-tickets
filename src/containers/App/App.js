@@ -1,8 +1,7 @@
-import React from 'react'
-import './App.css';
+import React from "react";
+import "./App.css";
 import SeatsContainer from "../../containers/Seats";
 import CartContainer from "../../containers/Cart";
-
 
 export default function App() {
   return (
@@ -12,4 +11,4 @@ export default function App() {
       <CartContainer />
     </div>
   );
-};
+}
