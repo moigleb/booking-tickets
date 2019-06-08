@@ -72,23 +72,27 @@ export default function seatsReducer(state = initialState, action) {
       };
     case RESET_EXPIRE_BOOKING:
       const dateNow = new Date();
-      let newExpire;
+      let newExpire = state.expire;
+
       state.expire.forEach(item => {
         if(dateNow > new Date(item.date)) {
+          console.log("expire");
           item.tickets.forEach(ticket => {
+            console.log(ticket);
             state.seats.forEach(seatsItem => {
               if (ticket.id === seatsItem.id) {
                 seatsItem.status = "exist";
+                newExpire = state.expire.filter(itemDate =>itemDate.date !== item.date);
                 console.log(newExpire);
               }
             });
           });
-          newExpire = state.expire.filter(itemDate =>itemDate.date !== item.date);
-          console.log(newExpire);
+
         }
       });
       return {
         ...state,
+        expire: newExpire,
       };
     default:
       return state;

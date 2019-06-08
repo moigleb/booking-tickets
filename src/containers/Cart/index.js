@@ -20,8 +20,6 @@ const CartContainer = ({
   const handleAddToCart = selectedSeats => e => {
 
   const dt = setExpireDateLocal();
-    console.log(dt);
-    console.log(new Date(dt));
     const expire = {
      date: dt,
      tickets: selectedSeats
@@ -67,6 +65,6 @@ export default connect(
 
   function setExpireDateLocal() {
     let dt = new Date();
-    dt.setMinutes( dt.getMinutes() + 10 );
+    dt.setMinutes( dt.getMinutes() + 1 );
     return dt
   }
