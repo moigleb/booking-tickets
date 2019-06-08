@@ -65,6 +65,6 @@ export default connect(
 
   function setExpireDateLocal() {
     let dt = new Date();
-    dt.setMinutes( dt.getMinutes() + 1 );
+    dt.setMinutes( dt.getMinutes() + 10 );
     return dt
   }
