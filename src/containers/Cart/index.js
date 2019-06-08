@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addToCart } from "../../containers/Cart/actions";
-import { clearSelected } from "../../containers/Seats/actions";
+import { clearSelected, setExpireDate } from "../../containers/Seats/actions";
 import Cart from "../../components/Cart";
 import { getTotal } from "../../containers/Seats/reducer";
 import { getTotalCart } from "../../containers/Cart/reducer";
@@ -13,12 +13,22 @@ const CartContainer = ({
   total,
   totalCart,
   addToCart,
-  clearSelected
+  clearSelected,
+  setExpireDate
 }) => {
   const [checked, setCount] = useState(false);
   const handleAddToCart = selectedSeats => e => {
-    addToCart(selectedSeats);
+
+  const dt = setExpireDateLocal();
+    console.log(dt);
+    console.log(new Date(dt));
+    const expire = {
+     date: dt,
+     tickets: selectedSeats
+   };
+    addToCart(selectedSeats, expire);
     clearSelected();
+    setExpireDate(expire);
     setCount(true);
   };
 
@@ -38,7 +48,9 @@ CartContainer.propTypes = {
   selectedSeats: PropTypes.any.isRequired,
   total: PropTypes.string,
   totalCart: PropTypes.string,
-  addToCart: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired,
+  setExpireDate: PropTypes.func.isRequired,
+  clearSelected: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -50,5 +62,11 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addToCart, getTotalCart, clearSelected }
+  { addToCart, getTotalCart, clearSelected, setExpireDate }
 )(CartContainer);
+
+  function setExpireDateLocal() {
+    let dt = new Date();
+    dt.setMinutes( dt.getMinutes() + 10 );
+    return dt
+  }

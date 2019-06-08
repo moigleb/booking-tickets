@@ -5,18 +5,22 @@ import { selectedSeats, unSelectedSeats } from "./actions";
 import SeatsItem from "../../components/SeatsItem";
 import SeatsList from "../../components/SeatsList";
 import ErrorModal from "../../components/Modal";
+import { resetExpireBooking } from "../../containers/Seats/actions";
 import { useState } from "react";
 
 const SeatsContainer = ({
   seats,
   selectedSeats,
   unSelectedSeats,
-  selectedSeatsProps
+  selectedSeatsProps,
+  resetExpireBooking,
+  expire
 }) => {
   const { isShowing, toggle } = useModal();
   const [content, setModalContent] = useState("selected");
 
   let maxLength = selectedSeatsProps && selectedSeatsProps.length === 4;
+  if(expire && expire.length > 0) resetExpireBooking();
 
   const onHandleClick = itemSelect => e => {
     const targetClass = e.currentTarget.classList;
@@ -85,6 +89,7 @@ SeatsContainer.propTypes = {
   ).isRequired,
   selectedSeats: PropTypes.func.isRequired,
   unSelectedSeats: PropTypes.func.isRequired,
+  resetExpireBooking: PropTypes.func.isRequired,
   selectedSeatsProps: PropTypes.array.isRequired
 };
 
@@ -92,12 +97,13 @@ const mapStateToProps = state => ({
   seats: state.seatsReducer.seats,
   rows: state.seatsReducer.rows,
   selectedSeatsProps: state.seatsReducer.selectedSeats,
-  maxLength: state.seatsReducer.maxLength
+  maxLength: state.seatsReducer.maxLength,
+  expire: state.seatsReducer.expire,
 });
 
 export default connect(
   mapStateToProps,
-  { selectedSeats, unSelectedSeats }
+  { selectedSeats, unSelectedSeats, resetExpireBooking }
 )(SeatsContainer);
 
 function useModal() {

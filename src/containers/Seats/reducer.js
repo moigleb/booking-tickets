@@ -4,7 +4,9 @@ import {
   FAILED_SEATS,
   SELECTED_SEAT,
   UNSELECTED_SEAT,
-  CLEAR_SELECTED
+  CLEAR_SELECTED,
+  RESET_EXPIRE_BOOKING,
+  SET_EXPIRE_DATE
 } from "./constants";
 
 const initialState = {
@@ -12,7 +14,7 @@ const initialState = {
   isLoading: false,
   selectedSeats: [],
   errorMessage: false,
-  rows: [10, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+  expire: []
 };
 
 export default function seatsReducer(state = initialState, action) {
@@ -61,6 +63,32 @@ export default function seatsReducer(state = initialState, action) {
       return {
         ...state,
         selectedSeats: []
+      };
+
+    case SET_EXPIRE_DATE:
+      return {
+        ...state,
+        expire:[...state.expire, action.expire],
+      };
+    case RESET_EXPIRE_BOOKING:
+      const dateNow = new Date();
+      let newExpire;
+      state.expire.forEach(item => {
+        if(dateNow > new Date(item.date)) {
+          item.tickets.forEach(ticket => {
+            state.seats.forEach(seatsItem => {
+              if (ticket.id === seatsItem.id) {
+                seatsItem.status = "exist";
+                console.log(newExpire);
+              }
+            });
+          });
+          newExpire = state.expire.filter(itemDate =>itemDate.date !== item.date);
+          console.log(newExpire);
+        }
+      });
+      return {
+        ...state,
       };
     default:
       return state;
